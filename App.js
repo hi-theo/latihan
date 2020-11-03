@@ -1,20 +1,20 @@
 import React,{useState} from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View,TextInput } from 'react-native';
 
 export default function App() {
 
-  const [name, setname] = useState('theo')
+  const [nama, setname] = useState('Theo')
+  const [umur, setumur] = useState('20')
 
-  const clickHandler = ()=>{
-    setname('Prasetio');
-  }
   return (
       <View style={styles.container}>
-        <Text>Namaku {name}</Text>
-        <Text>Test</Text>
-        <View>
-          <Button title='Update' onPress={clickHandler}></Button>
-        </View>
+        <Text>Masukan nama : </Text>
+        <TextInput style={styles.input} placeholder='e.g John Doe'
+        onChangeText={(val)=>setname(val)}></TextInput>
+        <Text>Masukan Umur : </Text>
+        <TextInput style={styles.input} placeholder='20'
+        onChangeText={(val)=>setumur(val)}></TextInput>
+        <Text>Nama {nama}. Umur: {umur}</Text>
       </View>
   );
 }
@@ -26,13 +26,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  hearder:{
-    flex:1,
-    backgroundColor: 'yellow',
-    fontSize: 30,
-  },
-  body:{
-    backgroundColor:'red'
-
+  input:{
+    borderWidth:1,
+    borderColor: '#777',
+    padding: 8,
+    margin:10,
+    width:200,
   }
 });
