@@ -1,13 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React,{useState} from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+
+  const [name, setname] = useState('theo')
+
+  const clickHandler = ()=>{
+    setname('Prasetio');
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <View style={styles.container}>
+        <Text>Namaku {name}</Text>
+        <Text>Test</Text>
+        <View>
+          <Button title='Update' onPress={clickHandler}></Button>
+        </View>
+      </View>
   );
 }
 
@@ -18,4 +26,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  hearder:{
+    flex:1,
+    backgroundColor: 'yellow',
+    fontSize: 30,
+  },
+  body:{
+    backgroundColor:'red'
+
+  }
 });
