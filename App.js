@@ -1,36 +1,51 @@
 import React,{useState} from 'react';
-import { Button, StyleSheet, Text, View,TextInput } from 'react-native';
+import { Button, StyleSheet, Text, View,TextInput, ScrollView } from 'react-native';
 
 export default function App() {
 
-  const [nama, setname] = useState('Theo')
-  const [umur, setumur] = useState('20')
+  const [nama, setname] = useState([
+    {nama: 'Theo', key: '1'},
+    {nama: 'Prasetio', key: '2'},
+    {nama: 'Bagas', key: '3'},
+    {nama: 'Jerome', key: '4'},
+    {nama: 'Anisa', key: '5'},
+    {nama: 'Theo', key: '6'},
+    {nama: 'Prasetio', key: '7'},
+    {nama: 'Bagas', key: '8'},
+    {nama: 'Jerome', key: '9'},
+    {nama: 'Anisa', key: '10'},
+  ])
 
   return (
+    <ScrollView>
       <View style={styles.container}>
-        <Text>Masukan nama : </Text>
-        <TextInput style={styles.input} placeholder='e.g John Doe'
-        onChangeText={(val)=>setname(val)}></TextInput>
-        <Text>Masukan Umur : </Text>
-        <TextInput style={styles.input} placeholder='20'
-        onChangeText={(val)=>setumur(val)}></TextInput>
-        <Text>Nama {nama}. Umur: {umur}</Text>
+        
+        { nama.map((item) => {
+          return(
+            <View style={styles.item}>
+              <Text>{item.nama}</Text>
+            </View>
+          )
+         })}
+         
       </View>
-  );
+      </ScrollView>
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingHorizontal: 40,
+    paddingTop:40,
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
-  input:{
-    borderWidth:1,
-    borderColor: '#777',
-    padding: 8,
-    margin:10,
-    width:200,
+  item:{
+    padding: 30,
+    fontSize: 30,
+    backgroundColor:'blue',
+    marginTop:24,
   }
 });
